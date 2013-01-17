@@ -52,7 +52,7 @@
               Progetti
               %b.caret
             %ul.dropdown-menu
-              - projects.each do |prj|
+              - sorted_projects.each do |prj|
                 - if prj == @item || @item[:project] == prj[:project_id]
                   - project_active = 'active'
                 - else
