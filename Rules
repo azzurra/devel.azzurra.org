@@ -22,6 +22,7 @@ preprocess do
   # Merge config.yaml with deployment-dependent config
   load_local_configuration ENV[ENV_NAME]
   load_navigation_data
+  load_news_data
 
   # Unpublish items if necessary
   items.delete_if { |item| item[:publish] == false }

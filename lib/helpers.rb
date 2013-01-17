@@ -22,6 +22,7 @@ include Azzurra::Devel::Environments
 include Azzurra::Devel::Navigation
 include Azzurra::Devel::Filters
 include Azzurra::Devel::Projects
+include Azzurra::Devel::News
 
 def get_title
   subtitle = is_front_page? ? "Home" : @item[:title]
