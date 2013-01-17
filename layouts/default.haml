@@ -1,0 +1,89 @@
+-# layouts/default.haml - Master layout file
+-# Copyright (C) 2013 Matteo Panella <morpheus@azzurra.org>
+-#
+-# This program is free software: you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation, either version 3 of the License, or
+-# (at your option) any later version.
+-#
+-# This program is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+!!!
+%html{:lang => "it"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %meta{:name => "generator", :content => "nanoc #{Nanoc::VERSION}"}
+    %title= get_title
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/bootstrap.min.css"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/bootstrap-responsive.min.css"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/overrides.min.css"}
+    / IE Sucks
+    /[if lt IE 9]
+      %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+
+    / Shortcut icons et al.
+    %link{:rel => "shortcut icon", :href => "/favicon.ico"}
+    %link{:rel => "apple-touch-icon-precomposed", :sizes => "144x144", :href => "/apple-touch-icon-144-precomposed.png"}
+    %link{:rel => "apple-touch-icon-precomposed", :sizes => "114x114", :href => "/apple-touch-icon-114-precomposed.png"}
+    %link{:rel => "apple-touch-icon-precomposed", :sizes => "72x72", :href => "/apple-touch-icon-72-precomposed.png"}
+    %link{:rel => "apple-touch-icon-precomposed", :href => "/apple-touch-icon-57-precomposed.png"}
+
+  %body
+    / Top-level navigation bar
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %button{:type => "button", :class => "btn btn-navbar", :data => {:toggle => "collapse", :target => ".nav-collapse"}}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a{:class => "brand", :href => "/"}
+            %img{:src => '/img/logo.png'}
+            = @config[:site_name]
+          .nav-collapse.collapse
+            %ul.nav
+              -# Home
+              - home = link_to('Home', '/')
+              - if is_front_page?
+                %li.active= home
+              - else
+                %li= home
+              -# Projects dropdown
+              %li.dropdown
+                %a{:href => "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}}
+                  Progetti
+                  %b.caret
+                %ul.dropdown-menu
+                  - projects.each do |prj|
+                    %li= link_to(prj[:title], prj, :tabindex => '-1')
+              %li
+                %a{:href => '#'} Contatti
+              %li
+                %a{:href => '#'} Credits
+            %ul.nav.pull-right
+              -# Generic navigation
+              - @config[:navigation].each do |block|
+                = render('_navbar_partial', :block => block)
+    .container
+      = render('_header')
+      %section
+        ~ yield
+
+      .row-fluid
+        %hr
+        %footer
+          &copy;
+          %a{:href => 'http://www.azzurra.org'} Azzurra IRC Network
+          &mdash; Contenuto concesso in licenza
+          %a{:href => "https://www.gnu.org/licenses/fdl-1.3.html", :target => "_blank"} GFDL 1.3
+
+    -# Javascript stuff
+    %script{:src => "http://code.jquery.com/jquery-latest.js"}
+    %script{:src => "/js/bootstrap.min.js"}
+    %script{:src => "/js/devel.js"}

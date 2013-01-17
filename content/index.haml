@@ -1,0 +1,51 @@
+---
+title: Home
+---
+
+%section#why
+  .row
+    .span12
+      %p
+        Benvenuti su Azzurra IRC Network Devel!
+        Su questo sito potete trovare i sorgenti del software di rete utilizzato da Azzurra, la relativa documentazione ed i repository pubblici.
+      %p
+        Al momento è ancora in fase di costruzione, qundi potrebbero esserci link (o intere sezioni) mancanti.
+
+%section#projects
+  .page-header
+    %h1 Progetti
+
+  .row
+    .span12
+      - unless projects.empty?
+        %ul
+          - sorted_projects.each do |project|
+            %li= link_to(project[:title], project)
+      - else
+        %p Nessun progetto disponibile, stay tuned!
+
+%section#news
+  .page-header
+    %h1 News
+
+  .row
+    .span12
+      %p
+        %span.label.label-important TODO
+        News del sito
+
+%section#links
+  .page-header
+    %h1 Link utili
+
+  .row
+    .span12
+      %ul
+        %li
+          Repository Git:
+          %a{:href => 'https://github.com/azzurra'} https://github.com/azzurra
+        %li
+          Bug tracking system: attualmente non disponibile, per segnalare eventuali bug inviate una mail a devel AT azzurra org.
+        %li
+          Forum di assistenza sui services di Azzurra:
+          %a{:href => 'http://forum.azzurra.org/forumdisplay.php?f=30'} http://forum.azzurra.org/forumdisplay.php?f=30

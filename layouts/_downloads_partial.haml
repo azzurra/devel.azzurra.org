@@ -1,0 +1,42 @@
+-# layouts/_downloads_partial.haml - Project downloads list
+-# Copyright (C) 2013 Matteo Panella <morpheus@azzurra.org>
+-#
+-# This program is free software: you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation, either version 3 of the License, or
+-# (at your option) any later version.
+-#
+-# This program is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+- dls = downloads_for_project
+
+%h2 Download
+- unless dls.empty?
+  %ul.icons
+    - dls.each do |dl|
+      %li
+        = succeed link_to(File.basename(dl[:content_filename]), dl) do
+          %i.icon-download-alt
+        %ul.icons
+          %li
+            %strong MD5:
+            %code= dl[:md5]
+          %li
+            %strong SHA1:
+            %code= dl[:sha1]
+          - if dl[:tag]
+            %li
+              %strong Tag:
+              = link_to(dl[:commit], "https://github.com/azzurra/#{dl[:project]}/tree/#{dl[:tag]}")
+          - elsif dl[:commit]
+            %li
+              %strong Commit:
+              = link_to(dl[:commit], "https://github.com/azzurra/#{dl[:project]}/commit/#{dl[:commit]}")
+- else
+  %p
+    Nessun download disponibile.

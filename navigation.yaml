@@ -1,0 +1,13 @@
+# Navigation entries
+-
+  title: "Azzurra"
+  entries:
+    -
+      title: "Homepage"
+      href: "http://www.azzurra.org/"
+    -
+      title: "Webchat"
+      href: "http://www.azzurra.org/chat/"
+    -
+      title: "Forum"
+      href: "http://forum.azzurra.org/"
