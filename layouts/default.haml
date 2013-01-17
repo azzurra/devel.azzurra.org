@@ -50,6 +50,8 @@
             %ul.nav
               -# Home
               - home = link_to('Home', '/')
+              - contacts = link_to('Contatti', '/contatti.html')
+              - credits = link_to('Credits', '/credits.html')
               - if is_front_page?
                 %li.active= home
               - else
@@ -62,10 +64,14 @@
                 %ul.dropdown-menu
                   - projects.each do |prj|
                     %li= link_to(prj[:title], prj, :tabindex => '-1')
-              %li
-                %a{:href => '#'} Contatti
-              %li
-                %a{:href => '#'} Credits
+              - if @item[:nav_id] == 'contatti'
+                %li.active= contacts
+              - else
+                %li= contacts
+              - if @item[:nav_id] == 'credits'
+                %li.active= credits
+              - else
+                %li= credits
             %ul.nav.pull-right
               -# Generic navigation
               - @config[:navigation].each do |block|
