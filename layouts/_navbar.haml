@@ -1,0 +1,66 @@
+-# layouts/_navbar.haml - Navbar template
+-# Copyright (C) 2013 Matteo Panella <morpheus@azzurra.org>
+-#
+-# This program is free software: you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation, either version 3 of the License, or
+-# (at your option) any later version.
+-#
+-# This program is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+- home_active = is_front_page?
+- contacts_active = @item[:nav_id] == 'contatti'
+- credits_active = @item[:nav_id] == 'credits'
+- projects_active = @item[:project_id] || @item[:project]
+
+- home_class = nil
+- contacts_class = nil
+- credits_class = nil
+- prj_class = "dropdown"
+
+- if home_active
+  - home_class = 'active'
+- if contacts_active
+  - contacts_class = 'active'
+- if credits_active
+  - credits_class = 'active'
+- if projects_active
+  - prj_class += ' active'
+
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %button{:type => "button", :class => "btn btn-navbar", :data => {:toggle => "collapse", :target => ".nav-collapse"}}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a{:class => "brand", :href => "/"}
+        %img{:src => '/img/logo.png'}
+        = @config[:site_name]
+      .nav-collapse.collapse
+        %ul.nav
+          -# Home
+          %li{:class => home_class}= link_to('Home', '/')
+          -# Projects dropdown
+          %li{:class => prj_class}
+            %a{:href => "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}}
+              Progetti
+              %b.caret
+            %ul.dropdown-menu
+              - projects.each do |prj|
+                - if prj == @item || @item[:project] == prj[:project_id]
+                  - project_active = 'active'
+                - else
+                  - project_active = nil
+                %li{:class => project_active}= link_to(prj[:title], prj, :tabindex => '-1')
+          %li{:class => contacts_class}= link_to('Contatti', '/contatti.html')
+          %li{:class => credits_class}= link_to('Credits', '/credits.html')
+        %ul.nav.pull-right
+          -# Generic navigation
+          - @config[:navigation].each do |block|
+            = render('_navbar_partial', :block => block)
