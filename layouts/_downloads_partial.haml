@@ -18,7 +18,7 @@
 %h2 Download
 - unless dls.empty?
   %ul.icons
-    - dls.each do |dl|
+    - dls.reverse_each do |dl|
       %li
         = succeed link_to(File.basename(dl[:content_filename]), dl) do
           %i.icon-download-alt
@@ -32,7 +32,7 @@
           - if dl[:tag]
             %li
               %strong Tag:
-              = link_to(dl[:commit], "https://github.com/azzurra/#{dl[:project]}/tree/#{dl[:tag]}")
+              = link_to(dl[:tag], "https://github.com/azzurra/#{dl[:project]}/tree/#{dl[:tag]}")
           - elsif dl[:commit]
             %li
               %strong Commit:
