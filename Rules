@@ -40,6 +40,14 @@ compile '/downloads/*' do
   # Skip downloads altogether
 end
 
+compile '/robots/' do
+  # Skip robots.txt
+end
+
+compile '/google*' do
+  # Skip Google ownership tokens
+end
+
 compile '/js/*/' do
   ext = item[:extension].nil? ? nil : item[:extension].split('.').last
 
@@ -90,6 +98,10 @@ route '/img/*/' do
 end
 
 route '/downloads/*/' do
+  item[:content_filename].gsub(/^content/, '')
+end
+
+route '/robots/' do
   item[:content_filename].gsub(/^content/, '')
 end
 
