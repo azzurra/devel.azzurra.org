@@ -63,5 +63,5 @@
           -# Generic navigation
           - @config[:navigation].each do |block|
             = render('_navbar_partial', :block => block)
-        %form.pull-right.navbar-search{:action => "/search.html"}
-          %input.search-query{:name => "q", :type => "text", :placeholder => "Cerca"}
+        %form.pull-right.navbar-search{:action => "/search.html", :id => "cse-search-box"}
+          %input.search-query{:name => "q", :type => "text"}
