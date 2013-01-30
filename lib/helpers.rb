@@ -39,7 +39,7 @@ def is_current_item?(nav_entry)
 end
 
 def excluded_from_sitemap?(item)
-  item.binary? || item[:publish] == false || item.identifier.match(/^\/assets\//) || item.identifier == '/sitemap.xml/' ||
+  item.binary? || item[:publish] == false || item[:is_hidden] == true || item.identifier.match(/^\/assets\//) || item.identifier == '/sitemap.xml/' ||
     item.identifier.match(/^\/(google[a-f0-9]+|robots)\//)
 end
 
