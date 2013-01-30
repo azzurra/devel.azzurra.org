@@ -60,7 +60,8 @@
                 %li{:class => project_active}= link_to(prj[:title], prj, :tabindex => '-1')
           %li{:class => contacts_class}= link_to('Contatti', '/contatti.html')
           %li{:class => credits_class}= link_to('Credits', '/credits.html')
-        %ul.nav.pull-right
           -# Generic navigation
           - @config[:navigation].each do |block|
             = render('_navbar_partial', :block => block)
+        %form.pull-right.navbar-search{:action => "/search.html"}
+          %input.search-query{:name => "q", :type => "text", :placeholder => "Cerca"}

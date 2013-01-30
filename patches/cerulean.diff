@@ -1,7 +1,7 @@
 Index: devel/assets/src/bootstrap/less/variables.less
 ===================================================================
---- devel.orig/assets/src/bootstrap/less/variables.less	2013-01-16 16:21:47.000000000 +0100
-+++ devel/assets/src/bootstrap/less/variables.less	2013-01-16 21:06:30.000000000 +0100
+--- devel.orig/assets/src/bootstrap/less/variables.less	2013-01-30 10:58:36.000000000 +0100
++++ devel/assets/src/bootstrap/less/variables.less	2013-01-30 12:01:16.000000000 +0100
 @@ -1,9 +1,9 @@
 -//
 +// Cerulean 2.2.2
@@ -218,8 +218,8 @@ Index: devel/assets/src/bootstrap/less/variables.less
 Index: devel/assets/src/bootstrap/less/bootswatch.less
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ devel/assets/src/bootstrap/less/bootswatch.less	2013-01-16 21:07:27.000000000 +0100
-@@ -0,0 +1,190 @@
++++ devel/assets/src/bootstrap/less/bootswatch.less	2013-01-30 12:02:02.000000000 +0100
+@@ -0,0 +1,196 @@
 +// Cerulean 2.2.2
 +// Bootswatch
 +// -----------------------------------------------------
@@ -408,12 +408,18 @@ Index: devel/assets/src/bootstrap/less/bootswatch.less
 +	opacity: 0.8;
 +}
 +
++img.gcsc-branding-img-noclear {
++	max-width: none;
++	padding-top: 2px;
++	vertical-align: top;
++}
++
 +// MEDIA QUERIES
 +// -----------------------------------------------------
 Index: devel/assets/src/bootstrap/less/bootstrap.less
 ===================================================================
---- devel.orig/assets/src/bootstrap/less/bootstrap.less	2013-01-16 21:06:30.000000000 +0100
-+++ devel/assets/src/bootstrap/less/bootstrap.less	2013-01-16 21:06:30.000000000 +0100
+--- devel.orig/assets/src/bootstrap/less/bootstrap.less	2013-01-30 12:01:16.000000000 +0100
++++ devel/assets/src/bootstrap/less/bootstrap.less	2013-01-30 12:01:16.000000000 +0100
 @@ -59,5 +59,7 @@
  @import "carousel.less";
  @import "hero-unit.less";
