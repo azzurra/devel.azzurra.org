@@ -1,0 +1,4 @@
+---
+layout: none
+---
+<%= xml_sitemap :items => @items.reject{ |i| excluded_from_sitemap?(i) } %>

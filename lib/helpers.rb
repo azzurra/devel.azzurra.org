@@ -18,6 +18,7 @@ require 'azdevel'
 
 include Nanoc::Helpers::Rendering
 include Nanoc::Helpers::LinkTo
+include Nanoc::Helpers::XMLSitemap
 include Azzurra::Devel::Environments
 include Azzurra::Devel::Navigation
 include Azzurra::Devel::Filters
@@ -33,9 +34,13 @@ def is_front_page?
   @item.identifier == '/'
 end
 
-
 def is_current_item?(nav_entry)
   not @item[:nav_id].nil? and nav_entry.has_key?(:nav_id) and @item[:nav_id] == nav_entry[:nav_id]
+end
+
+def excluded_from_sitemap?(item)
+  item.binary? || item[:publish] == false || item.identifier.match(/^\/assets\//) || item.identifier == '/sitemap.xml/' ||
+    item.identifier.match(/^\/(google[a-f0-9]+|robots)\//)
 end
 
 def route_path(item)
