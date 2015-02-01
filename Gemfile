@@ -1,9 +1,4 @@
-source :rubygems
-
-# RVM metadata
-
-#ruby=1.9.3
-#ruby-gemset=azdevel
+source 'https://rubygems.org'
 
 gem 'nanoc'
 gem 'fssm'
