@@ -6,3 +6,6 @@
 	path = assets/src/fontawesome
 	url = git://github.com/FortAwesome/Font-Awesome.git
 	ignore = untracked
+[submodule "output"]
+	path = output
+	url = https://github.com/azzurra/azzurra.github.io.git
