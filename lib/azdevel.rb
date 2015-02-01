@@ -19,7 +19,6 @@ module Azzurra
   end
 end
 
-require 'azdevel/environments'
 require 'azdevel/filters'
 require 'azdevel/navigation'
 require 'azdevel/projects'

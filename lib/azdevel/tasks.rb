@@ -21,5 +21,4 @@ module Azzurra::Devel
   end
 end
 
-require 'azdevel/tasks/publish'
 require 'azdevel/tasks/assets'

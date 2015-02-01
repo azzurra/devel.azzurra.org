@@ -1,5 +1,0 @@
-# Base URL for atom feed
-base_url: "http://localhost:3000"
-
-# Site name
-site_name: "Azzurra Devel"

@@ -26,22 +26,9 @@ include Azzurra::Devel::Tasks
 # Create assets management tasks
 BuildAssets.new
 
-CLEAN.include("output")
+# XXX: since "output" is going to live in its own git repo,
+# it should *NOT* be included in CLEAN and CLOBBER.
 CLOBBER.include("tmp")
-
-namespace :publish do
-
-  desc "Compile and publish in staging mode"
-  Publish.new :staging => [ "rake:assets" ] do |t|
-    t.mode = :staging
-  end
-
-end
-
-desc "Compile and publish in production mode"
-Publish.new :publish => :assets do |t|
-  t.mode = :production
-end
 
 # Emergency reset switch (just in case)
 namespace :emergency do

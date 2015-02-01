@@ -19,7 +19,6 @@ require 'azdevel'
 include Nanoc::Helpers::Rendering
 include Nanoc::Helpers::LinkTo
 include Nanoc::Helpers::XMLSitemap
-include Azzurra::Devel::Environments
 include Azzurra::Devel::Navigation
 include Azzurra::Devel::Filters
 include Azzurra::Devel::Projects

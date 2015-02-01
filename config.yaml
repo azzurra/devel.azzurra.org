@@ -27,7 +27,7 @@ prune:
   # Which files and directories you want to exclude from pruning. If you version
   # your output directory, you should probably exclude VCS directories such as
   # .git, .svn etc.
-  exclude: [ '.git' ]
+  exclude: [ '.git', '.nojekyll', 'CNAME' ]
 
 # The data sources where nanoc loads its data from. This is an array of
 # hashes; each array element represents a single data source. By default,
@@ -76,11 +76,8 @@ watcher:
   notify_on_compilation_success: true
   notify_on_compilation_failure: true
 
-# Deployment configuration
-deploy:
-  production:
-    kind: rsync
-    dst: "devel:production"
-  staging:
-    kind: rsync
-    dst: "devel:staging"
+# Base URL for sitemap
+base_url: "http://devel.azzurra.org"
+
+# Site name
+site_name: "Azzurra Devel"
