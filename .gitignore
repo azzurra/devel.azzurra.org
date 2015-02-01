@@ -3,7 +3,6 @@
 /tmp/*
 /content/assets/*
 /work/*
-/content/google*
 /.bundle
 /vendor
 /.ruby-version
